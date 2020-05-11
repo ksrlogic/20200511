@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.nav {
+  color: #00b7ff;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.ghibli {
+  width: 800px;
+  height: 450px;
+  display: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gallerybox {
+  display: flex;
+  justify-content: center; /* align flex items horizontally (in this case) */
+  align-items: center; /* align flex items vertically (in this case) */
+  background-color: lightgray;
+  height: 450px;
+}
