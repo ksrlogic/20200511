@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+const sanitizer = require("sanitizer");
 var router = express.Router();
 var bodyParser = require("body-parser");
 var qs = require("querystring");
@@ -51,8 +52,8 @@ router.get("/createpage/create", function (req, res, next) {
 
 router.post("/create_process", function (req, res, next) {
   var post = req.body;
-  var title = post.title;
-  var description = post.description;
+  var title = sanitizer.sanitize(post.title);
+  var description = sanitizer.sanitize(post.description);
   fs.writeFile(`data/${title}`, description, "utf8", function (err) {
     res.writeHead(302, { Location: `/` });
     res.end();
@@ -72,8 +73,8 @@ router.get("/:pageID/update", function (req, res, next) {
 });
 router.post("/update_process", function (req, res, next) {
   var post = req.body;
-  var title = post.title;
-  var description = post.description;
+  var title = sanitizer.sanitize(post.title);
+  var description = sanitizer.sanitize(post.description);
   fs.writeFile(`data/${title}`, description, "utf8", function (err) {
     res.writeHead(302, { Location: `/${title}` });
     res.end();
